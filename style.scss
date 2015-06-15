@@ -1,0 +1,98 @@
+/* Styles go here */
+.container {
+  margin-top: 50px;
+}
+
+.tag-interface {
+  position: relative;
+  padding: 0;
+  font-size: 0;
+
+  .tags-window {
+    position: relative;
+    height: 100%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    vertical-align: top;
+    overflow: hidden;
+
+    .tags-slider {
+      position: absolute;
+      overflow: hidden;
+      padding: 4px;
+      white-space: nowrap;
+      height: 100%;
+      right: 0;
+      background-color: transparent;
+
+      .tag {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+
+        /* appearance */
+        background-color: #CCCCCC;
+        color: #FFFFFF;
+        padding: 2px 4px;
+        border-radius: 4px;
+        text-align: left;
+        margin: 0 2px;
+        height: 100%;
+
+        &.selected {
+          background-color: blue;
+        }
+
+        .display {
+          display: inline-block;
+          padding-top: 4px;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .control {
+          display: inline-block;
+          padding-top: 4px;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  input {
+    display: inline-block;
+    height: 100%;
+
+    font-size: 14px;
+    line-height: 14px;
+    border: 0;
+    vertical-align: top;
+    background-color: transparent;
+    padding-top: 4px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.debug-stats {
+  li {
+    label {
+
+    }
+    span {
+      position: absolute;
+      left: 550px;
+    }
+  }
+}

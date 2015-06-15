@@ -1,0 +1,14 @@
+<div class="tag-interface" ng-class="{ 'has-tags': hasTags() }">
+  <div class="tags-window">
+    <div class="tags-slider">
+      <div class="tag" ng-repeat="tag in tags" ng-class="{selected: cursorPosition === $index}">
+        <span class="display" title="{{tag.displayField}}">{{tag.displayField}}</span>
+        <span class="control" ng-click="removeTag($index)">×</span>
+      </div>
+    </div>
+  </div>
+  <input type="text" class="tag-input"
+    placeholder="Search for..."
+    ng-model="newTagLabel"
+    ng-keydown="keypress($event)" />
+</div>
