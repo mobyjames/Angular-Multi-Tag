@@ -4,16 +4,22 @@
 
   app.controller('MainCtrl', function($rootScope, $scope) {
     $scope.tags = [
-      { displayField: "Super Fantastic Sandwiches" },
-      { displayField: "Super Horrible Sandwiches" },
-      { displayField: "Yummy Burgers" },
-      { displayField: "Tastey Apples" },
-      { displayField: "Silly Kids Burgers" },
-      { displayField: "Yum" },
-      { displayField: "Gross" },
-      { displayField: "Whatever" },
-      { displayField: "Food Fight Super Long Title - And more!!!" }
+      { label: "Super Fantastic Sandwiches" },
+      { label: "Super Horrible Sandwiches" },
+      { label: "Yummy Burgers" },
+      { label: "Tastey Apples" },
+      { label: "Silly Kids Burgers" },
+      { label: "Yum" },
+      { label: "Gross" },
+      { label: "Whatever" },
+      { label: "Food Fight Super Long Title - And more!!!" }
     ];
+
+    $scope.submittedTags = [];
+
+    $scope.submitTags = function(tags) {
+      $scope.submittedTags = tags;
+    };
   });
 
   app.directive('tagsInterface', ['$rootScope', '$timeout', '$window', function($rootScope, $timeout, $window){
@@ -22,7 +28,8 @@
       replace: true,
       templateUrl: 'tags-interface.tpl.html',
       scope: {
-        tags: '='
+        tags: '=',
+        onSubmit: '='
       },
       link: function(scope, element) {
         var KEY_BACKSPACE = 8;
@@ -80,7 +87,7 @@
 
         var enter = function() {
           if (scope.newTagLabel.length === 0 && scope.tags.length > 0) {
-            // Submit HERE
+            scope.onSubmit(scope.tags);
           } else if (scope.newTagLabel.length > 0 ) {
             addTag();
           }
@@ -119,7 +126,7 @@
 
         var createTag = function(label, value) {
           return {
-            displayField: label,
+            label: label,
             searchValue: value
           };
         };
@@ -183,7 +190,6 @@
 
         // init
         angular.element($window).bind('resize', function() {
-          console.log('resized');
           scope.calcTagContainerWidth(element).then(scrollTags);
         });
 

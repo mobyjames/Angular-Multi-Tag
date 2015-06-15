@@ -13,11 +13,14 @@
     <div class="container">
       <div class="well">
         <div class="input-group">
-          <tags-interface class="form-control" tags="tags"></tags-interface>
+          <tags-interface class="form-control" tags="tags" on-submit="submitTags"></tags-interface>
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" ng-click="addTag()">Go!</button>
           </span>
         </div>
+        <ul style="margin-top: 20px;">
+          <li ng-repeat="tag in submittedTags">{{tag.label}}</li>
+        </ul>
         <!-- /input-group -->
       </div>
     <!-- /.container -->
